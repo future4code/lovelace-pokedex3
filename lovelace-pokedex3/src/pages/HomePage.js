@@ -1,13 +1,31 @@
 import React from 'react'
+import axios from 'axios'
+import styled
+    from 'styled-components'
+
+const HeaderStyle = styled.div`
+display: flex;
+height: 6%;
+width: 100%;
+background-color: red;
+color: black;
+align-items: center;
+justify-content: space-around;
+`
 
 
 const HomePage = () => {
     return (
         <div>
-            <button>Ir para Pokedex</button>
-            <h3>Lista de Pokémons</h3>
+            <HeaderStyle>
+                <h1>Lista de Pokémons!</h1>
+                <button>Ir para a PokeDex</button>         
+            </HeaderStyle>
+            <div>
+                <button>Ir para Pokedex</button>
+                <h3>Lista de Pokémons</h3>
 
-            <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png' />
+                <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png' />
 
             <button>Adicionar um Pokédex</button>
             <button>Detalhes</button>
@@ -109,29 +127,11 @@ const HomePage = () => {
             <button>Detalhes</button>
 
 
-
-
-
-
-
-
-
-
-
+            </div>
         </div>
 
     )
 }
 export default HomePage
-
-
-
-
-
-
-
-
-
-
 
 
