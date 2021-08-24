@@ -1,9 +1,10 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Clarice Medeiros Passos
+- Germana Etges Lopes
+- Maria Galdino Benning
+- Yara Tacy Barbosa do Nascimento 
 
 Link do Surge: www.link.com.br
 
