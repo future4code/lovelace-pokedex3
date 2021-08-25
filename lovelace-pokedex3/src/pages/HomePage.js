@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import styled
-    from 'styled-components'
+import styled from 'styled-components'
+import { useHistory } from "react-router-dom";
+import { goToPokedex } from "../routes/coordinator";
 
 const HeaderStyle = styled.div`
 
@@ -14,13 +15,14 @@ align-items: center;
 justify-content: space-around;
 `
 
-
-
 const HomePage = () => {
+
+    const history = useHistory()
+
     return (
         <div>
             <HeaderStyle>
-                <button>Ir para a PokeDex</button>
+                <button onClick={() => goToPokedex(history)}>Ir para a PokeDex</button>
                 <h1>Lista de Pokémons!</h1>
             </HeaderStyle>
 
@@ -135,5 +137,3 @@ const HomePage = () => {
     )
 }
 export default HomePage
-
-
