@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import styled from "styled-components"
 import PokeImagem from "./pokeImagem"
+import { useHistory } from "react-router-dom"
 
 const Card = styled.div`
     display: flex;
@@ -30,7 +31,14 @@ display: flex;
 
 `
 
+
+
+
+
 const PokeCard = () => {
+const history = useHistory ()
+
+
 
     const [pokeLista, setPokeList] = useState([])
 
@@ -48,6 +56,7 @@ const PokeCard = () => {
     useEffect(() => {
         pegaPokemon()
     }, [])
+    
 
     const renderizaPokemonen = pokeLista && pokeLista.map((pokemon) => {
 
