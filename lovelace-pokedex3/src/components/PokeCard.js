@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { BASE_URL } from "../constants/url"
 import axios from "axios"
 import styled from "styled-components"
 import PokeImagem from "./pokeImagem"
@@ -37,7 +36,7 @@ const PokeCard = () => {
 
     const pegaPokemon = () => {
 
-        axios.get(`${BASE_URL}/?limit=20`)
+        axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20`)
             .then((res) => {
                 setPokeList(res.data.results)
             })
