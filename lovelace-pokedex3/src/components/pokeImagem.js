@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { BASE_URL } from "../constants/url"
 import axios from "axios"
 import styled from "styled-components"
 
