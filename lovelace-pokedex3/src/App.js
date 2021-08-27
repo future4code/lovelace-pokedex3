@@ -4,6 +4,7 @@ import GlobalState from './global/GlobalState';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Pokedex from './pages/Pokedex';
+import PokeDetalhes from './pages/PokeDetalhes';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Router />
       </GlobalState>
     </div>
+
   );
 }
 

@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { goToHome } from "../routes/coordinator";
 import GlobalStateContext from '../global/GlobalStateContext';
 import PokeImagem from "../components/pokeImagem"
+import Button from '@material-ui/core/Button';
 
 
 const HeaderStyle = styled.div`
@@ -12,7 +13,7 @@ display: flex;
 height: 6%;
 width: 100%;
 background-color: red;
-color: black;
+color: darkblue;
 align-items: center;
 justify-content: space-around;
 `
@@ -81,7 +82,7 @@ const Pokedex = () => {
     return (
         <div>
             <HeaderStyle>
-                <button onClick={() => goToHome(history)}>Ir para a Lista de Pokemons!</button>
+            <Button  variant='contained' color='primary' onClick={() => goToHome(history)}>Ir para a PokeDex</Button>
                 <h1>PokeDex</h1>
             </HeaderStyle>
             <Conteiner>
@@ -92,3 +93,6 @@ const Pokedex = () => {
     )
 }
 export default Pokedex
+                
+
+        

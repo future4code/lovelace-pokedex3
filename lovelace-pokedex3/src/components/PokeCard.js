@@ -3,15 +3,20 @@ import axios from "axios"
 import styled from "styled-components"
 import PokeImagem from "./pokeImagem"
 import GlobalStateContext from "../global/GlobalStateContext"
+import Button from '@material-ui/core/Button';
+import { useHistory } from "react-router-dom"
 
 
 const Card = styled.div`
-    display: flex;
+
     flex-direction: column;
     padding: 10px;
-    box-sizing: border-box;
-    border: solid 1px gray;
+    border: solid 6px blue;
     align-items: center;
+    display:inline;
+   text-align: center;
+   float: left;
+   border-radius: 30px;
 `
 
 const Conteiner = styled.div`
@@ -19,19 +24,20 @@ const Conteiner = styled.div`
     grid-template-columns: 300px 300px 300px 300px;
     justify-content: center;
     align-content: center;
-    box-sizing: border-box;
     padding: 10px;
     gap: 20px;
-    margin: 10px;
+    border-radius: 30px;
 
 `
-
 
 const Botao = styled.button`
 display: flex;
 `
 
 const PokeCard = () => {
+const history = useHistory ()
+
+
 
     const { states, setters } = useContext(GlobalStateContext)
     const [pokeLista, setPokeLista] = useState([])  
@@ -56,6 +62,7 @@ const PokeCard = () => {
 
         return (
             <div>
+
                 <Card>
 
                     <PokeImagem name={pokemon.name} />
@@ -64,6 +71,18 @@ const PokeCard = () => {
                     <Botao onClick={() => addPokemon(pokemon)}>Adicionar ao Pokedex</Botao>
                     <Botao>Detalhes</Botao>
                 </Card>
+
+
+            <Card>
+        
+                <PokeImagem name={pokemon.name} />
+                <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
+              
+            <Button variant='contained' color='secondary' >Adicione</Button>
+            <Button variant='contained' color='primary'>Detalhes</Button>
+           
+            </Card>
+ 
 
             </div>
         )
@@ -79,3 +98,4 @@ const PokeCard = () => {
 }
 
 export default PokeCard
+
