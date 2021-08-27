@@ -35,12 +35,15 @@ display: flex;
 `
 
 const PokeCard = () => {
-const history = useHistory ()
+    const history = useHistory()
 
+    const irParaDetalhes = (name) => {
+        history.push(`/details/${name}`)
+    }
 
 
     const { states, setters } = useContext(GlobalStateContext)
-    const [pokeLista, setPokeLista] = useState([])  
+    const [pokeLista, setPokeLista] = useState([])
 
     console.log(states)
 
@@ -58,33 +61,15 @@ const history = useHistory ()
         window.alert(`${poke.name} foi adicionado à sua Pokédex!`)
     }
 
-        const renderizaPokemonen = states.pokeLista && states.pokeLista.map((pokemon) => {
+    const renderizaPokemonen = states.pokeLista && states.pokeLista.map((pokemon) => {
 
         return (
-            <div>
-
-                <Card>
-
-                    <PokeImagem name={pokemon.name} />
-                    <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
-
-                    <Botao onClick={() => addPokemon(pokemon)}>Adicionar ao Pokedex</Botao>
-                    <Botao>Detalhes</Botao>
-                </Card>
-
-
             <Card>
-        
                 <PokeImagem name={pokemon.name} />
                 <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
-              
-            <Button variant='contained' color='secondary' >Adicione</Button>
-            <Button variant='contained' color='primary'>Detalhes</Button>
-           
+                <Button variant='contained' color='secondary' onClick={addPokemon} >Adicione</Button>
+                <Button variant='contained' color='primary' onClick={()=>irParaDetalhes(pokemon.name)}>Detalhes</Button>
             </Card>
- 
-
-            </div>
         )
 
     })
