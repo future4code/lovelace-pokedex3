@@ -21,24 +21,23 @@ align-items: center;
 justify-content: space-around;
 `
 
-    const irParaPokedex = () => {
-        history.push("/pokedex")
-    }
+
+
 const HomePage = () => {
 
     const history = useHistory()
 
+    const irParaPokedex = () => {
+        history.push("/pokedex")
+    }
 
     const irParaDetalhes = () => {
         history.push("/pokedetalhes")
-        
-        
-        }
+
+    }
     return (
         <div>
             <HeaderStyle>
-
-                
                 <Button variant='contained' color='primary' onClick={irParaPokedex}>Ir para a PokeDex</Button>
                 <h1>Lista de Pokémons!</h1>
             </HeaderStyle>
@@ -50,4 +49,3 @@ const HomePage = () => {
 }
 export default HomePage
 
-            
