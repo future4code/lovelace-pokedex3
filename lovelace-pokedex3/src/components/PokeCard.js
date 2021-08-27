@@ -35,12 +35,12 @@ display: flex;
 `
 
 const PokeCard = () => {
-const history = useHistory ()
+    const history = useHistory()
 
 
 
     const { states, setters } = useContext(GlobalStateContext)
-    const [pokeLista, setPokeLista] = useState([])  
+    const [pokeLista, setPokeLista] = useState([])
 
     console.log(states)
 
@@ -58,7 +58,7 @@ const history = useHistory ()
         window.alert(`${poke.name} foi adicionado à sua Pokédex!`)
     }
 
-        const renderizaPokemonen = states.pokeLista && states.pokeLista.map((pokemon) => {
+    const renderizaPokemonen = states.pokeLista && states.pokeLista.map((pokemon) => {
 
         return (
             <div>
@@ -67,22 +67,15 @@ const history = useHistory ()
 
                     <PokeImagem name={pokemon.name} />
                     <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
+                    <Button onClick={() => addPokemon(pokemon)} variant='contained' color='secondary' >Adicione</Button>
+                    <Button variant='contained' color='primary'>Detalhes</Button>
 
-                    <Botao onClick={() => addPokemon(pokemon)}>Adicionar ao Pokedex</Botao>
-                    <Botao>Detalhes</Botao>
                 </Card>
 
 
-            <Card>
-        
-                <PokeImagem name={pokemon.name} />
-                <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
-              
-            <Button variant='contained' color='secondary' >Adicione</Button>
-            <Button variant='contained' color='primary'>Detalhes</Button>
-           
-            </Card>
- 
+
+
+
 
             </div>
         )
