@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios"
 import styled from "styled-components"
 import PokeImagem from "./pokeImagem"
-
+import GlobalStateContext from "../global/GlobalStateContext"
 import Button from '@material-ui/core/Button';
-
-
 import { useHistory } from "react-router-dom"
 
 
@@ -32,40 +30,49 @@ const Conteiner = styled.div`
 
 `
 
-
-
-
-
-
-
+const Botao = styled.button`
+display: flex;
+`
 
 const PokeCard = () => {
 const history = useHistory ()
 
 
 
-    const [pokeLista, setPokeList] = useState([])
+    const { states, setters } = useContext(GlobalStateContext)
+    const [pokeLista, setPokeLista] = useState([])  
 
-    const pegaPokemon = () => {
+    console.log(states)
 
-        axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20`)
-            .then((res) => {
-                setPokeList(res.data.results)
-            })
-            .catch((err) => {
-                alert(err.response)
-            })
+    const addPokemon = (poke) => {
+
+        const novaPokedex = [...states.pokedex, poke]
+
+        const novaListaPokemon = states.pokeLista.filter((pokemon) => {
+            return pokemon.name !== poke.name
+        })
+
+        setters.setPokedex(novaPokedex)
+        setters.setPokeLista(novaListaPokemon)
+
+        window.alert(`${poke.name} foi adicionado à sua Pokédex!`)
     }
 
-    useEffect(() => {
-        pegaPokemon()
-    }, [])
-    
-
-    const renderizaPokemonen = pokeLista && pokeLista.map((pokemon) => {
+        const renderizaPokemonen = states.pokeLista && states.pokeLista.map((pokemon) => {
 
         return (
             <div>
+
+                <Card>
+
+                    <PokeImagem name={pokemon.name} />
+                    <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
+
+                    <Botao onClick={() => addPokemon(pokemon)}>Adicionar ao Pokedex</Botao>
+                    <Botao>Detalhes</Botao>
+                </Card>
+
+
             <Card>
         
                 <PokeImagem name={pokemon.name} />
@@ -76,16 +83,17 @@ const history = useHistory ()
            
             </Card>
  
+
             </div>
         )
 
     })
     return (
-            <Conteiner>
+        <Conteiner>
             {renderizaPokemonen}
-            </Conteiner>
+        </Conteiner>
 
-       
+
     )
 }
 
