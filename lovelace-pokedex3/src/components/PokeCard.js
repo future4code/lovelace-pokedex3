@@ -37,6 +37,9 @@ display: flex;
 const PokeCard = () => {
     const history = useHistory()
 
+    const irParaDetalhes = (name) => {
+        history.push(`/details/${name}`)
+    }
 
 
     const { states, setters } = useContext(GlobalStateContext)
@@ -61,23 +64,12 @@ const PokeCard = () => {
     const renderizaPokemonen = states.pokeLista && states.pokeLista.map((pokemon) => {
 
         return (
-            <div>
-
-                <Card>
-
-                    <PokeImagem name={pokemon.name} />
-                    <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
-                    <Button onClick={() => addPokemon(pokemon)} variant='contained' color='secondary' >Adicione</Button>
-                    <Button variant='contained' color='primary'>Detalhes</Button>
-
-                </Card>
-
-
-
-
-
-
-            </div>
+            <Card>
+                <PokeImagem name={pokemon.name} />
+                <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
+                <Button variant='contained' color='secondary' onClick={addPokemon} >Adicione</Button>
+                <Button variant='contained' color='primary' onClick={()=>irParaDetalhes(pokemon.name)}>Detalhes</Button>
+            </Card>
         )
 
     })
@@ -91,4 +83,5 @@ const PokeCard = () => {
 }
 
 export default PokeCard
+
 

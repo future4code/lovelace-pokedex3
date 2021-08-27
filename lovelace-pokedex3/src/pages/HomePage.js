@@ -21,20 +21,19 @@ align-items: center;
 justify-content: space-around;
 `
 
-
-
+   
 const HomePage = () => {
 
     const history = useHistory()
-
-    const irParaPokedex = () => {
-        history.push("/pokedex")
-    }
-
     const irParaDetalhes = () => {
-        history.push("/pokedetalhes")
+        history.push("/pokedetalhes")}
 
-    }
+        const irParaPokedex = () => {
+            history.push("/pokedex")
+        }
+        
+        
+
     return (
         <div>
             <HeaderStyle>
@@ -48,4 +47,3 @@ const HomePage = () => {
     )
 }
 export default HomePage
-
