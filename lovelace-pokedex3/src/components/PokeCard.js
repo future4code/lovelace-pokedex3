@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios"
 import styled from "styled-components"
 import PokeImagem from "./pokeImagem"
+import GlobalStateContext from "../global/GlobalStateContext"
+
 
 const Card = styled.div`
     display: flex;
@@ -31,40 +33,26 @@ display: flex;
 
 const PokeCard = () => {
 
-    const [pokedex, setPokedex] = useState([]);
-    const [pokeLista, setPokeLista] = useState([])
-    console.log(pokedex)
+    const { states, setters } = useContext(GlobalStateContext)
+    const [pokeLista, setPokeLista] = useState([])  
+
+    console.log(states)
 
     const addPokemon = (poke) => {
 
-        const novaPokedex = [...pokedex, poke]
+        const novaPokedex = [...states.pokedex, poke]
 
-        const novaListaPokemon = pokeLista.filter((pokemon) => {
+        const novaListaPokemon = states.pokeLista.filter((pokemon) => {
             return pokemon.name !== poke.name
         })
 
-        setPokedex(novaPokedex)
-        setPokeLista(novaListaPokemon)
+        setters.setPokedex(novaPokedex)
+        setters.setPokeLista(novaListaPokemon)
 
         window.alert(`${poke.name} foi adicionado à sua Pokédex!`)
     }
 
-    const pegaPokemon = () => {
-
-        axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20`)
-            .then((res) => {
-                setPokeLista(res.data.results)
-            })
-            .catch((err) => {
-                alert(err.response)
-            })
-    }
-
-    useEffect(() => {
-        pegaPokemon()
-    }, [])
-
-    const renderizaPokemonen = pokeLista && pokeLista.map((pokemon) => {
+        const renderizaPokemonen = states.pokeLista && states.pokeLista.map((pokemon) => {
 
         return (
             <div>
