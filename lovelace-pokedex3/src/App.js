@@ -9,11 +9,8 @@ function App() {
   return (
 
     <div>
-      <Router>
-      </Router>
+      <Router />
     </div>
-
-    <Router />
   );
 }
 

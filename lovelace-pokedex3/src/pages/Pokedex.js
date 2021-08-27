@@ -22,7 +22,7 @@ const Pokedex = () => {
     return (
     <div>
         <HeaderStyle>
-            <button onClick={() => goToHome(history)}>Ir para a PokeDex</button>
+            <button onClick={() => goToHome(history)}>Ir para a Lista de Pokemons!</button>
             <h1>PokeDex</h1>
         </HeaderStyle>
         <div>Pokedex</div>

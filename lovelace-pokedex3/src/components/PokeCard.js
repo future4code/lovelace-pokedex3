@@ -27,18 +27,33 @@ const Conteiner = styled.div`
 
 const Botao = styled.button`
 display: flex;
-
 `
 
 const PokeCard = () => {
 
-    const [pokeLista, setPokeList] = useState([])
+    const [pokedex, setPokedex] = useState([]);
+    const [pokeLista, setPokeLista] = useState([])
+    console.log(pokedex)
+
+    const addPokemon = (poke) => {
+
+        const novaPokedex = [...pokedex, poke]
+
+        const novaListaPokemon = pokeLista.filter((pokemon) => {
+            return pokemon.name !== poke.name
+        })
+
+        setPokedex(novaPokedex)
+        setPokeLista(novaListaPokemon)
+
+        window.alert(`${poke.name} foi adicionado à sua Pokédex!`)
+    }
 
     const pegaPokemon = () => {
 
         axios.get(`https://pokeapi.co/api/v2/pokemon/?limit=20`)
             .then((res) => {
-                setPokeList(res.data.results)
+                setPokeLista(res.data.results)
             })
             .catch((err) => {
                 alert(err.response)
@@ -53,25 +68,25 @@ const PokeCard = () => {
 
         return (
             <div>
-            <Card>
-        
-                <PokeImagem name={pokemon.name} />
-                <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
-                
-            <Botao>Adicionar ao Pokedex</Botao>
-            <Botao>Detalhes</Botao>
-            </Card>
- 
+                <Card>
+
+                    <PokeImagem name={pokemon.name} />
+                    <p>{pokemon.id} <strong>{pokemon.name}</strong></p>
+
+                    <Botao onClick={() => addPokemon(pokemon)}>Adicionar ao Pokedex</Botao>
+                    <Botao>Detalhes</Botao>
+                </Card>
+
             </div>
         )
 
     })
     return (
-            <Conteiner>
+        <Conteiner>
             {renderizaPokemonen}
-            </Conteiner>
+        </Conteiner>
 
-       
+
     )
 }
 

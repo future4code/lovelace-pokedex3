@@ -3,6 +3,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import PokeCard from '../components/PokeCard'
 import { useHistory } from "react-router"
+import { useState } from 'react'
 
 const HeaderStyle = styled.div`
 display: flex;
@@ -23,6 +24,7 @@ const HomePage = () => {
     const history = useHistory()
 
 
+
     const irParaPokedex = () => {
         history.push("/pokedex")
     }
@@ -34,9 +36,9 @@ const HomePage = () => {
                 <h1>Lista de Pokémons!</h1>
             </HeaderStyle>
             <div>
-            <PokeCard/>
+                <PokeCard />
             </div>
-            </div>
+        </div>
     )
 }
 export default HomePage
