@@ -6,7 +6,7 @@ Nome dos integrantes:
 - Maria Galdino Benning
 - Yara Tacy Barbosa do Nascimento 
 
-Link do Surge: http://wwww.https://pokedex-2021.surge.sh/
+Link do Surge: http://www.https://pokedex-2021.surge.sh/
 
 O que funciona:
 - Mostrar Pokémons
